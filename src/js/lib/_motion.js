@@ -75,14 +75,20 @@ module.exports = function(angularApp) {
 
             // Fail early & silently log
             var isInvalidSelector = typeof options.selector === 'undefined' || options.selector === '';
-
             if (isInvalidSelector) {
-                console.log('invalid blinds selector');
+            	console.log('invalid blinds selector');
+            	return false;
+            }
+
+            if (elementsCount == 0) {
                 return false;
             }
 
             var animateBlindsDom = document.querySelectorAll(options.selector);
             var elementsCount = animateBlindsDom.length;
+            if (elementsCount == 0) {
+                return false;
+            }
             var elementAnimationCount = 0;
 
             // Count the elements within the starting viewport so we're not exacting
@@ -166,6 +172,9 @@ module.exports = function(angularApp) {
 
             var animateFadeSlideInDom = document.querySelectorAll(options.selector);
             var elementsCount = animateFadeSlideInDom.length;
+            if (elementsCount == 0) {
+            	return false;
+            }
             var elementAnimationCount = 0;
 
             // Count the elements within the starting viewport so we're not exacting
@@ -247,6 +256,9 @@ module.exports = function(angularApp) {
 
             var animateSlideInRightDom = document.querySelectorAll(options.selector);
             var elementsCount = animateSlideInRightDom.length;
+            if (elementsCount == 0) {
+            	return false;
+            }
             var elementAnimationCount = 0;
 
             // Count the elements within the starting viewport so we're not
@@ -334,6 +346,9 @@ module.exports = function(angularApp) {
 
             var animateRippleDom = document.querySelectorAll(options.selector);
             var elementsCount = animateRippleDom.length;
+            if (elementsCount == 0) {
+                return false;
+            }
             var elementAnimationCount = 0;
 
             // Count the elements within the starting viewport so we're not
@@ -382,7 +397,9 @@ module.exports = function(angularApp) {
 
         function panInLeft(options) {
 
-            // We have a single option, so it may be passed as a string or property
+        	options = options || {};
+
+        	// We have a single option, so it may be passed as a string or property
             if (typeof options === 'string') {
                 options = {
                     selector: options
@@ -399,6 +416,10 @@ module.exports = function(angularApp) {
 
             var animatePanInLeftDom = document.querySelectorAll(options.selector);
             var elementAnimationCount = animatePanInLeftDom.length;
+            if (elementAnimationCount == 0) {
+                return false;
+            }
+            
             for (var i = 0; i < elementAnimationCount; i++) {
                 var element = animatePanInLeftDom[i];
                 var classNameToRemove = 'animate-pan-in-left';
@@ -409,7 +430,9 @@ module.exports = function(angularApp) {
 
         function pushDown(options) {
 
-            // We have a single option, so it may be passed as a string or property
+        	options = options || {};
+
+        	// We have a single option, so it may be passed as a string or property
             if (typeof options === 'string') {
                 options = {
                     selector: options
@@ -426,6 +449,9 @@ module.exports = function(angularApp) {
 
             var animatePushDownDom = document.querySelectorAll(options.selector);
             var elementAnimationCount = animatePushDownDom.length;
+            if (elementAnimationCount == 0) {
+                return false;
+            }
             for (var i = 0; i < elementAnimationCount; i++) {
                 var element = animatePushDownDom[i];
                 var classNameToRemove = options.selector.split('.')[1];
@@ -436,7 +462,9 @@ module.exports = function(angularApp) {
 
         function slideUp(options) {
 
-            // We have a single option, so it may be passed as a string or property
+        	options = options || {};
+
+        	// We have a single option, so it may be passed as a string or property
             if (typeof options === 'string') {
                 options = {
                     selector: options
@@ -453,6 +481,9 @@ module.exports = function(angularApp) {
 
             var animateSlideUpDom = document.querySelectorAll(options.selector);
             var elementAnimationCount = animateSlideUpDom.length;
+            if (elementAnimationCount == 0) {
+                return false;
+            }
             for (var i = 0; i < elementAnimationCount; i++) {
                 var element = animateSlideUpDom[i];
                 var classNameToRemove = options.selector.split('.')[1];
