@@ -159,3 +159,6 @@ test/temp
 
 *.sublime-project
 ####################################
+
+# No dist build
+dist/
